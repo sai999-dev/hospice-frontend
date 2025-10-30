@@ -64,7 +64,7 @@ const FormStep2 = ({ formData, updateFormData, errors }) => {
       </div>
 
       <div className="mb-6">
-        <label className="block mb-3 font-[550] text-[#13323b] text-[14px]">How urgent is your need for hospice care?</label>
+        <label className="block mb-3 font-[550] text-[#13323b] text-[14px]">When is care need?</label>
         <div className="flex flex-col gap-2">
           {[
             { value: 'immediate', label: 'Need care immediately' },
