@@ -91,11 +91,11 @@ const HeroSection = ({ currentStep, formData, onFormSubmit, isLoading, setFormDa
               </div>
               <div className="flex items-center gap-3 bg-white p-4 rounded-lg border border-[rgba(94,82,64,0.12)] shadow-[0_1px_3px_rgba(0,0,0,0.04),_0_1px_2px_rgba(0,0,0,0.02)]">
                 <span className="text-[20px] shrink-0">🔒</span>
-                <span><strong>Confidential & Secure:</strong> Your information is protected by HIPAA-compliant privacy standards.</span>
+                <span><strong>Confidential & Secure:</strong> Your information is protected by privacy standards.</span>
               </div>
               <div className="flex items-center gap-3 bg-white p-4 rounded-lg border border-[rgba(94,82,64,0.12)] shadow-[0_1px_3px_rgba(0,0,0,0.04),_0_1px_2px_rgba(0,0,0,0.02)]">
                 <span className="text-[20px] shrink-0">📞</span>
-                <span><strong>24/7 Support:</strong> Crisis support and compassionate help are available around the clock.</span>
+                <span><strong>Support:</strong> Crisis support and compassionate help are available around the clock.</span>
               </div>
             </div>
 
