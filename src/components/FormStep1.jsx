@@ -14,7 +14,7 @@ const FormStep1 = ({ formData, updateFormData, errors }) => {
       </div>
 
       <div className="mb-6">
-        <label className="block mb-3 font-[550] text-[#13323b] text-[14px]">Who are you seeking hospice information for?</label>
+        <label className="block mb-3 font-[550] text-[#13323b] text-[14px]">Who are you seeking care information for?</label>
         <div className="flex flex-col gap-2">
           {[
             { value: 'myself', label: 'Myself' },
