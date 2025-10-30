@@ -12,7 +12,7 @@ const TrustSection = () => {
           <div>
             <h3 className="text-[#13323b] text-[20px] mb-4 font-semibold">Our Promise to You</h3>
             <ul className="list-none p-0 m-0">
-              {['No cost to families','Independent, unbiased guidance','HIPAA-compliant privacy protection','Licensed healthcare professionals only','24/7 crisis support available'].map((item) => (
+              {['No cost to families','Independent, unbiased guidance','privacy protection','Licensed healthcare professionals only','crisis support available'].map((item) => (
                 <li key={item} className="relative pl-6 mb-2 text-[#62708d] leading-[1.5]">
                   <span className="absolute left-0 text-[#22c55e] font-bold">✓</span>
                   {item}
