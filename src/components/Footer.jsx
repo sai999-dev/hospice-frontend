@@ -28,7 +28,7 @@ const Footer = () => {
           <div>
             <h4 className="text-[#fcfcfa] text-[16px] mb-4 font-semibold">Family Hospice Support Network</h4>
             <p style={{color:'rgba(252, 252, 250, 0.8)', lineHeight:'1.5', marginBottom:'8px'}}>Independent resource center helping Dallas families navigate hospice care decisions</p>
-            <p className="text-[16px] font-semibold">24/7 Support: <a className="text-[#fcfcfa]" href="tel:+12145552273">(214) 555-CARE (2273)</a></p>
+            <p className="text-[16px] font-semibold">Support Line: <a className="text-[#fcfcfa]" href="tel:+12145552273">(972)784-4066</a></p>
           </div>
           <div>
             <h5 className="text-[#fcfcfa] text-[14px] mb-3 font-[550]">Our Services</h5>
@@ -42,7 +42,6 @@ const Footer = () => {
           <div>
             <h5 className="text-[#fcfcfa] text-[14px] mb-3 font-[550]">Privacy & Compliance</h5>
             <ul className="list-none p-0 m-0">
-              <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'HIPAA Privacy Notice', privacyPdf)}>HIPAA Privacy Notice</a></li>
               <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'Privacy Policy', privacyPdf)}>Privacy Policy</a></li>
               <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'Terms of Service', termsPdf)}>Terms of Service</a></li>
               <li className="mb-2">Licensed Healthcare Professionals</li>
