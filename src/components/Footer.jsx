@@ -49,7 +49,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-[rgba(252,252,250,0.2)] pt-4 text-center">
-          <p className="text-[12px] m-0" style={{color:'rgba(252,252,250,0.6)'}}>&copy; 2020-2025 Family Hospice Support Network. All rights reserved. | Serving Dallas-Fort Worth Area</p>
+          <p className="text-[12px] m-0" style={{color:'rgba(252,252,250,0.6)'}}>&copy; All rights reserved. | Serving Dallas-Fort Worth Area</p>
         </div>
       </div>
       {pdfOpen && pdfSrc && (
