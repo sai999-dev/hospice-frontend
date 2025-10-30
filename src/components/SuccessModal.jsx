@@ -90,7 +90,7 @@ const SuccessModal = ({ onClose, formData }) => {
             </div>
             <div className="bg-[rgba(59,130,246,0.08)] border border-[rgba(59,130,246,0.3)] rounded-lg p-4 text-center">
               <h4 className="text-[#3b82f6] text-[14px] mb-2 font-[550]">Need immediate support?</h4>
-              <p className="text-[#62708d] m-0 text-[14px]">Call our 24/7 support line: <a href="tel:+12145552273" className="text-[#3b82f6] font-semibold no-underline hover:text-[#2563eb]">(214) 555-CARE (2273)</a></p>
+              <p className="text-[#62708d] m-0 text-[14px]">Call our support line: <a href="tel:+19727844066" className="text-[#3b82f6] font-semibold no-underline hover:text-[#2563eb]">(214) 555-CARE (2273)</a></p>
             </div>
           </div>
         </div>
