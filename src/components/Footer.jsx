@@ -1,24 +1,19 @@
 import React, { useState } from 'react'
-import PdfModal from './PdfModal'
-import privacyPdf from '../privacy.pdf'
-import termsPdf from '../terms.pdf'
+import TextModal from './TextModal'
 
 const Footer = () => {
-  const [pdfOpen, setPdfOpen] = useState(false)
-  const [pdfTitle, setPdfTitle] = useState('')
-  const [pdfSrc, setPdfSrc] = useState(null)
+  const [modalType, setModalType] = useState(null)
+  const [modalTitle, setModalTitle] = useState('')
 
-  const openDocument = (e, title, src) => {
+  const openDocument = (e, title, type) => {
     e.preventDefault()
-    setPdfTitle(title)
-    setPdfSrc(src)
-    setPdfOpen(true)
+    setModalTitle(title)
+    setModalType(type)
   }
 
   const closeModal = () => {
-    setPdfOpen(false)
-    setPdfSrc(null)
-    setPdfTitle('')
+    setModalType(null)
+    setModalTitle('')
   }
 
   return (
@@ -42,8 +37,8 @@ const Footer = () => {
           <div>
             <h5 className="text-[#fcfcfa] text-[14px] mb-3 font-[550]">Privacy & Compliance</h5>
             <ul className="list-none p-0 m-0">
-              <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'Privacy Policy', privacyPdf)}>Privacy Policy</a></li>
-              <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'Terms of Service', termsPdf)}>Terms of Service</a></li>
+              <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'Privacy Policy', 'privacy')}>Privacy Policy</a></li>
+              <li className="mb-2"><a className="no-underline" style={{color:'rgba(252,252,250,0.8)', transition:'color 150ms cubic-bezier(0.16,1,0.3,1)'}} href="#" onClick={(e)=>openDocument(e,'Terms of Service', 'terms')}>Terms of Service</a></li>
               <li className="mb-2">Licensed Healthcare Professionals</li>
             </ul>
           </div>
@@ -52,8 +47,8 @@ const Footer = () => {
           <p className="text-[12px] m-0" style={{color:'rgba(252,252,250,0.6)'}}>&copy; All rights reserved. | Serving Dallas-Fort Worth Area</p>
         </div>
       </div>
-      {pdfOpen && pdfSrc && (
-        <PdfModal src={pdfSrc} title={pdfTitle} onClose={closeModal} />
+      {modalType && (
+        <TextModal type={modalType} title={modalTitle} onClose={closeModal} />
       )}
     </footer>
   )
