@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import PdfModal from './PdfModal'
-import privacyPdf from '../privacy.pdf'
-import termsPdf from '../terms.pdf'
+import TextModal from './TextModal'
 
 const FormStep4 = ({ formData, updateFormData, errors }) => {
-  const [pdfSrc, setPdfSrc] = useState(null)
-  const [pdfTitle, setPdfTitle] = useState('')
+  const [modalType, setModalType] = useState(null)
+  const [modalTitle, setModalTitle] = useState('')
 
   const handleInputChange = (field, value) => {
     updateFormData(field, value)
@@ -13,19 +11,19 @@ const FormStep4 = ({ formData, updateFormData, errors }) => {
 
   const openPrivacy = (e) => {
     e.preventDefault()
-    setPdfTitle('Privacy Policy')
-    setPdfSrc(privacyPdf)
+    setModalTitle('Privacy Policy')
+    setModalType('privacy')
   }
 
   const openTerms = (e) => {
     e.preventDefault()
-    setPdfTitle('Terms of Service')
-    setPdfSrc(termsPdf)
+    setModalTitle('Terms of Service')
+    setModalType('terms')
   }
 
   const closeModal = () => {
-    setPdfSrc(null)
-    setPdfTitle('')
+    setModalType(null)
+    setModalTitle('')
   }
 
   return (
@@ -113,8 +111,8 @@ const FormStep4 = ({ formData, updateFormData, errors }) => {
         </label>
         {errors.terms_consent && <div className="text-[#dc2626] text-[12px] mt-1 flex items-center gap-1">{errors.terms_consent}</div>}
       </div>
-      {pdfSrc && (
-        <PdfModal src={pdfSrc} title={pdfTitle} onClose={closeModal} />
+      {modalType && (
+        <TextModal type={modalType} title={modalTitle} onClose={closeModal} />
       )}
     </>
   )
