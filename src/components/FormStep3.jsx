@@ -1,50 +1,40 @@
 import React from 'react'
 
 const FormStep3 = ({ formData, updateFormData, errors }) => {
-  // Function to update form data
+  // Update any field value in parent state
   const handleInputChange = (field, value) => {
     updateFormData(field, value)
   }
 
-  // Function to format phone number for display
+  // ✅ Format phone number as +1 (123)-456-7890
   const formatPhoneDisplay = (digits) => {
     const numbers = (digits || '').replace(/\D/g, '').slice(0, 10)
     const len = numbers.length
+
     if (len === 0) return ''
+    const area = numbers.slice(0, 3)
+    const middle = numbers.slice(3, 6)
+    const last = numbers.slice(6, 10)
 
-    const area = numbers.slice(0, Math.min(3, len))
-    const next = len > 3 ? numbers.slice(3, Math.min(6, len)) : ''
-    const last = len > 6 ? numbers.slice(6, Math.min(10, len)) : ''
-
-    let formatted = '+1'
-    if (len > 0) formatted += ` (${area}`
-    if (len >= 3) formatted += ')'
-    if (len > 3) formatted += ` ${next}`
+    let formatted = '+1 '
+    if (len > 0) formatted += `(${area}`
+    if (len >= 3) formatted += `)`
+    if (len > 3) formatted += `-${middle}`
     if (len > 6) formatted += `-${last}`
-
     return formatted
   }
 
-  // Handle phone number input change
+  // ✅ Handle phone number input
   const handlePhoneChange = (e) => {
     let onlyNumbers = e.target.value.replace(/\D/g, '')
-
-    // Remove leading country code if entered
-    if (onlyNumbers.startsWith('1')) {
-      onlyNumbers = onlyNumbers.slice(1)
-    }
-
-    // Limit to 10 digits (U.S. standard)
-    if (onlyNumbers.length > 10) {
-      onlyNumbers = onlyNumbers.slice(0, 10)
-    }
-
+    if (onlyNumbers.startsWith('1')) onlyNumbers = onlyNumbers.slice(1)
+    if (onlyNumbers.length > 10) onlyNumbers = onlyNumbers.slice(0, 10)
     handleInputChange('phone', onlyNumbers)
   }
 
   return (
     <>
-      {/* --- Header --- */}
+      {/* Header */}
       <div className="text-center mb-8">
         <h3 className="text-[20px] text-[#13323b] mb-2">Contact Information</h3>
         <p className="text-[#62708d] mb-4 text-[14px]">
@@ -55,9 +45,12 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
         </div>
       </div>
 
-      {/* --- First Name --- */}
+      {/* First Name */}
       <div className="mb-6">
-        <label htmlFor="first_name" className="block mb-3 font-medium text-[14px] text-[#13323b]">
+        <label
+          htmlFor="first_name"
+          className="block mb-3 font-medium text-[14px] text-[#13323b]"
+        >
           First name
         </label>
         <input
@@ -77,9 +70,12 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
         )}
       </div>
 
-      {/* --- Phone --- */}
+      {/* ✅ Phone Number */}
       <div className="mb-6">
-        <label htmlFor="phone" className="block mb-3 font-medium text-[14px] text-[#13323b]">
+        <label
+          htmlFor="phone"
+          className="block mb-3 font-medium text-[14px] text-[#13323b]"
+        >
           Best phone number to reach you
         </label>
         <input
@@ -89,8 +85,8 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
           className={`block w-full px-4 py-3 border-2 rounded-lg text-[14px] text-[#13323b] bg-[#fcfcfa] ${
             errors.phone ? 'border-[#dc2626]' : 'border-[rgba(94,82,64,0.2)]'
           }`}
-          placeholder="+1 (___) ___-____"
-          value={formatPhoneDisplay(formData.phone || '')}
+          placeholder="+1 (___)-___-____"
+          value={formatPhoneDisplay(formData.phone)}
           onChange={handlePhoneChange}
           required
         />
@@ -101,9 +97,12 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
         )}
       </div>
 
-      {/* --- Email --- */}
+      {/* Email */}
       <div className="mb-6">
-        <label htmlFor="email" className="block mb-3 font-medium text-[14px] text-[#13323b]">
+        <label
+          htmlFor="email"
+          className="block mb-3 font-medium text-[14px] text-[#13323b]"
+        >
           Email address (optional)
         </label>
         <input
@@ -122,7 +121,7 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
         )}
       </div>
 
-      {/* --- Best Time --- */}
+      {/* Best Time to Call */}
       <div className="mb-6">
         <label className="block mb-3 font-medium text-[14px] text-[#13323b]">
           Best time for us to call
@@ -143,10 +142,14 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
                 name="best_time"
                 value={option.value}
                 checked={formData.best_time === option.value}
-                onChange={(e) => handleInputChange('best_time', e.target.value)}
+                onChange={(e) =>
+                  handleInputChange('best_time', e.target.value)
+                }
                 required
               />
-              <span className="text-[14px] text-[#13323b]">{option.label}</span>
+              <span className="text-[14px] text-[#13323b]">
+                {option.label}
+              </span>
             </label>
           ))}
         </div>
@@ -157,11 +160,12 @@ const FormStep3 = ({ formData, updateFormData, errors }) => {
         )}
       </div>
 
-      {/* --- Privacy Info --- */}
+      {/* Info Notice */}
       <div className="flex items-center gap-2 mt-4 p-4 bg-[rgba(6,182,212,0.08)] rounded-lg text-[12px] text-[#62708d] border border-[rgba(94,82,64,0.12)]">
         <span className="text-[16px] shrink-0">🔒</span>
         <span>
-          Your information is protected by HIPAA and will only be used to provide hospice guidance.
+          Your information is protected by HIPAA and will only be used to
+          provide hospice guidance.
         </span>
       </div>
     </>
