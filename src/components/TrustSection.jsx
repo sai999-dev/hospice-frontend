@@ -1,6 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const TrustSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  useEffect(() => {
+    // Check if body has modal-open class
+    const checkModal = () => {
+      setIsModalOpen(document.body.classList.contains('modal-open'))
+    }
+
+    // Create a MutationObserver to watch for class changes on body
+    const observer = new MutationObserver(checkModal)
+    observer.observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    })
+
+    // Initial check
+    checkModal()
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  // Hide TrustSection when modal is open
+  if (isModalOpen) {
+    return null
+  }
+
   return (
     <section className="bg-white py-12 border-t border-[rgba(94,82,64,0.12)]">
       <div className="w-full mx-auto px-4 sm:max-w-[640px] md:max-w-[768px] lg:max-w-[1024px] xl:max-w-[1280px]">
