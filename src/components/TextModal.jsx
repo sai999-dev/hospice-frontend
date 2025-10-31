@@ -1,8 +1,41 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PrivacyContent from './PrivacyContent'
 import TermsContent from './TermsContent'
 
 const TextModal = ({ type, title, onClose }) => {
+  // Prevent body scrolling when modal is open
+  useEffect(() => {
+    if (type) {
+      // Save the original overflow style
+      const originalOverflow = document.body.style.overflow
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden'
+      // Add class to body to indicate modal is open
+      document.body.classList.add('modal-open')
+      
+      // Cleanup: restore original overflow when modal closes
+      return () => {
+        document.body.style.overflow = originalOverflow
+        document.body.classList.remove('modal-open')
+      }
+    }
+  }, [type])
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    if (type) {
+      const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+          onClose()
+        }
+      }
+      document.addEventListener('keydown', handleEscape)
+      return () => {
+        document.removeEventListener('keydown', handleEscape)
+      }
+    }
+  }, [type, onClose])
+
   if (!type) return null
 
   return (
