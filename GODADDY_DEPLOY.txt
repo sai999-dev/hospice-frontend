@@ -1,0 +1,165 @@
+================================================================================
+  DEPLOY DIST FILES TO GODADDY - STEP BY STEP GUIDE
+================================================================================
+
+STEP 1: PREPARE DIST FILES
+---------------------------
+1. Open the "dist" folder in your project
+2. You should see these files:
+   - index.html
+   - robots.txt
+   - sitemap.xml
+   - assets/ (folder with CSS, JS, images)
+
+IMPORTANT: Upload ALL contents of the dist folder, not the folder itself!
+
+
+STEP 2: ACCESS GODADDY FILE MANAGER
+------------------------------------
+1. Log into GoDaddy: https://www.godaddy.com
+2. Go to "My Products" → "Web Hosting"
+3. Click "Manage" next to your hosting plan
+4. Find "File Manager" or "cPanel File Manager"
+5. Click to open File Manager
+
+
+STEP 3: NAVIGATE TO PUBLIC_HTML
+--------------------------------
+1. In File Manager, navigate to the root directory
+2. Look for folder named:
+   - "public_html" (most common)
+   - "www"
+   - "httpdocs"
+   - Or root folder "/"
+
+IMPORTANT: This is where your website files should be!
+
+
+STEP 4: BACKUP EXISTING FILES (IF ANY)
+---------------------------------------
+1. If there are existing files in public_html:
+   - Select all existing files
+   - Create a backup folder (e.g., "backup_old_files")
+   - Move files to backup folder
+   - OR rename public_html to "public_html_old"
+
+
+STEP 5: UPLOAD DIST FILES
+--------------------------
+Method 1: Upload via File Manager (Recommended for small projects)
+1. In public_html folder, click "Upload" button
+2. Select all files from your dist folder:
+   - index.html
+   - robots.txt
+   - sitemap.xml
+3. Upload the entire assets/ folder (with all its contents)
+4. Wait for upload to complete
+
+Method 2: Upload via FTP (Faster for large files)
+1. Get FTP credentials from GoDaddy:
+   - GoDaddy → Hosting → FTP Account Details
+2. Use FTP client (FileZilla, WinSCP, etc.)
+3. Connect to your server
+4. Navigate to public_html
+5. Upload all files from dist folder
+
+
+STEP 6: VERIFY FILE STRUCTURE
+------------------------------
+After upload, your public_html should look like:
+   public_html/
+   ├── index.html
+   ├── robots.txt
+   ├── sitemap.xml
+   └── assets/
+       ├── index-xxxxx.js
+       ├── index-xxxxx.css
+       └── [other assets]
+
+IMPORTANT: 
+- index.html MUST be in the root (public_html/)
+- robots.txt MUST be in the root (public_html/)
+- sitemap.xml MUST be in the root (public_html/)
+- assets/ folder should be in the root (public_html/assets/)
+
+
+STEP 7: SET FILE PERMISSIONS (If needed)
+-----------------------------------------
+1. Select index.html → Right-click → Permissions
+2. Set to: 644 (or Read/Write for Owner, Read for Others)
+3. Select robots.txt → Set to: 644
+4. Select sitemap.xml → Set to: 644
+5. Select assets/ folder → Set to: 755
+
+
+STEP 8: TEST YOUR WEBSITE
+--------------------------
+1. Visit: https://www.hospiceconnectdfw.com/
+   ✅ Should show your website
+
+2. Visit: https://www.hospiceconnectdfw.com/robots.txt
+   ✅ Should show robots.txt content
+
+3. Visit: https://www.hospiceconnectdfw.com/sitemap.xml
+   ✅ Should show sitemap.xml content
+
+4. View Page Source (Right-click → View Page Source):
+   ✅ Should see Open Graph meta tags
+   ✅ Should see Twitter Card meta tags
+
+
+TROUBLESHOOTING
+---------------
+
+Problem: Website shows 404 or blank page
+Solution:
+- Check that index.html is in public_html root (not in a subfolder)
+- Clear browser cache
+- Check file permissions (644 for files, 755 for folders)
+
+Problem: robots.txt or sitemap.xml not accessible
+Solution:
+- Verify files are in public_html root (not in assets/ folder)
+- Check file permissions (should be 644)
+- Clear browser cache
+
+Problem: Images/CSS not loading
+Solution:
+- Verify assets/ folder uploaded correctly
+- Check file paths in index.html point to /assets/...
+- Clear browser cache
+
+Problem: .htaccess not working (if you added it)
+Solution:
+- Some GoDaddy plans require enabling mod_rewrite
+- Contact GoDaddy support to enable Apache modules
+- Or configure through cPanel → Apache Modules
+
+
+IMPORTANT NOTES
+---------------
+1. Upload contents of dist folder, NOT the dist folder itself
+2. All files should be directly in public_html/ (or your root folder)
+3. Keep the assets/ folder structure intact
+4. Don't modify file names or paths
+5. After upload, it may take a few minutes for changes to appear
+
+
+FILE CHECKLIST
+--------------
+Before going live, verify these files exist in public_html:
+   [ ] index.html
+   [ ] robots.txt
+   [ ] sitemap.xml
+   [ ] assets/ folder (with all CSS, JS, images)
+
+After upload, test these URLs:
+   [ ] https://www.hospiceconnectdfw.com/
+   [ ] https://www.hospiceconnectdfw.com/robots.txt
+   [ ] https://www.hospiceconnectdfw.com/sitemap.xml
+
+
+================================================================================
+  READY TO DEPLOY!
+================================================================================
+
